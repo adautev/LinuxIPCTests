@@ -1,18 +1,25 @@
 #include "drawing.h"
 #include <stdio.h>
-void send_message(int qid, struct drawing_message *qbuf) {
+#include <string.h>
+short send_message(int queue_id, struct drawing_message *message_buffer) {
+    if((msgsnd(queue_id, (struct drawing_message *)message_buffer,
+            strlen(message_buffer->drawing_parameter)+1, 0)) ==-1)
+    {
+            perror("msgsnd");
+            return -1;
+    }
+    return 0;
+}
+void read_message(int queue_id, struct drawing_message *message_buffer) {
     
 }
-void read_message(int qid, struct drawing_message *qbuf) {
+void remove_queue(int queue_id) {
     
 }
-void remove_queue(int qid) {
+void change_queue_mode(int queue_id, char *mode) {
     
 }
-void change_queue_mode(int qid, char *mode) {
-    
-}
-key_t create_queue(char* key, int* message_queue_id) {
+key_t create_queue(int key, int* message_queue_id) {
     /* Create unique key via call to ftok() */
     key_t queue_key;
     if((queue_key = ftok("/tmp", key)) == (key_t)-1) {
