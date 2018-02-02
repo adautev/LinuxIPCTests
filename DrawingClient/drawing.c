@@ -10,7 +10,7 @@ short send_message(int queue_id, struct drawing_message *message_buffer) {
     }
     return 0;
 }
-void read_message(int queue_id, struct drawing_message *message_buffer) {
+short read_message(int queue_id, struct drawing_message *message_buffer) {
     
 }
 void remove_queue(int queue_id) {
