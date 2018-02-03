@@ -1,1 +1,1 @@
-./Debug/main.c.o
+./Debug/up_DrawingClient_drawing.c.o ./Debug/main.c.o

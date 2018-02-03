@@ -1,4 +1,5 @@
 #include <sys/msg.h>
+#define MAX_SEND_SIZE 80
 enum drawing_command {
     MOVE,
     PAINT,
@@ -6,8 +7,9 @@ enum drawing_command {
 };
 
 struct drawing_message {
+    long mtype;
     enum drawing_command command;
-    char* drawing_parameter;
+    char mtext[MAX_SEND_SIZE];
 };
 short send_message(int queue_id, struct drawing_message *message_buffer);
 short read_message(int queue_id, struct drawing_message *message_buffer);

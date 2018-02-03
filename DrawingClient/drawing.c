@@ -3,7 +3,7 @@
 #include <string.h>
 short send_message(int queue_id, struct drawing_message *message_buffer) {
     if((msgsnd(queue_id, (struct drawing_message *)message_buffer,
-            strlen(message_buffer->drawing_parameter)+1, 0)) ==-1)
+            MAX_SEND_SIZE, 0)) ==-1)
     {
             perror("msgsnd");
             return -1;
@@ -11,7 +11,8 @@ short send_message(int queue_id, struct drawing_message *message_buffer) {
     return 0;
 }
 short read_message(int queue_id, struct drawing_message *message_buffer) {
-    
+    msgrcv(queue_id, (struct drawing_message *)message_buffer, MAX_SEND_SIZE, 0, 0);
+    return 1;
 }
 void remove_queue(int queue_id) {
     

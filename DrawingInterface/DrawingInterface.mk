@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=adautev
-Date                   :=02/02/18
+Date                   :=03/02/18
 CodeLitePath           :=/home/adautev/.codelite
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -39,8 +39,8 @@ LinkOptions            :=
 IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). 
 IncludePCH             := 
 RcIncludePath          := 
-Libs                   := 
-ArLibs                 :=  
+Libs                   := $(LibrarySwitch)ncurses 
+ArLibs                 :=  "ncurses" 
 LibPath                := $(LibraryPathSwitch). 
 
 ##
@@ -60,7 +60,8 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) 
+TERM:=xterm-256color
+Objects0=$(IntermediateDirectory)/up_DrawingClient_drawing.c$(ObjectSuffix) $(IntermediateDirectory)/main.c$(ObjectSuffix) 
 
 
 
@@ -91,6 +92,14 @@ PreBuild:
 ##
 ## Objects
 ##
+$(IntermediateDirectory)/up_DrawingClient_drawing.c$(ObjectSuffix): ../DrawingClient/drawing.c $(IntermediateDirectory)/up_DrawingClient_drawing.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "/home/adautev/Git/LinuxIPCTests/DrawingClient/drawing.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/up_DrawingClient_drawing.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/up_DrawingClient_drawing.c$(DependSuffix): ../DrawingClient/drawing.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/up_DrawingClient_drawing.c$(ObjectSuffix) -MF$(IntermediateDirectory)/up_DrawingClient_drawing.c$(DependSuffix) -MM ../DrawingClient/drawing.c
+
+$(IntermediateDirectory)/up_DrawingClient_drawing.c$(PreprocessSuffix): ../DrawingClient/drawing.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/up_DrawingClient_drawing.c$(PreprocessSuffix) ../DrawingClient/drawing.c
+
 $(IntermediateDirectory)/main.c$(ObjectSuffix): main.c $(IntermediateDirectory)/main.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "/home/adautev/Git/LinuxIPCTests/DrawingInterface/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.c$(DependSuffix): main.c
