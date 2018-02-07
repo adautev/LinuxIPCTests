@@ -3,10 +3,10 @@
 ## any manual changes will be erased      
 ##
 ## Debug
-ProjectName            :=DrawingClient
+ProjectName            :=POSIXThreading
 ConfigurationName      :=Debug
 WorkspacePath          :=/home/adautev/Git/LinuxIPCTests
-ProjectPath            :=/home/adautev/Git/LinuxIPCTests/DrawingClient
+ProjectPath            :=/home/adautev/Git/LinuxIPCTests/POSIXThreading
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
@@ -32,15 +32,15 @@ Preprocessors          :=
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E
-ObjectsFileList        :="DrawingClient.txt"
+ObjectsFileList        :="POSIXThreading.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
 LinkOptions            :=  
 IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). 
 IncludePCH             := 
 RcIncludePath          := 
-Libs                   := $(LibrarySwitch)ncurses 
-ArLibs                 :=  "ncurses" 
+Libs                   := $(LibrarySwitch)pthread 
+ArLibs                 :=  "pthread" 
 LibPath                := $(LibraryPathSwitch). 
 
 ##
@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/drawing.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) 
 
 
 
@@ -92,20 +92,12 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.c$(ObjectSuffix): main.c $(IntermediateDirectory)/main.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "/home/adautev/Git/LinuxIPCTests/DrawingClient/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "/home/adautev/Git/LinuxIPCTests/POSIXThreading/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.c$(DependSuffix): main.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.c$(ObjectSuffix) -MF$(IntermediateDirectory)/main.c$(DependSuffix) -MM main.c
 
 $(IntermediateDirectory)/main.c$(PreprocessSuffix): main.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.c$(PreprocessSuffix) main.c
-
-$(IntermediateDirectory)/drawing.c$(ObjectSuffix): drawing.c $(IntermediateDirectory)/drawing.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "/home/adautev/Git/LinuxIPCTests/DrawingClient/drawing.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/drawing.c$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/drawing.c$(DependSuffix): drawing.c
-	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/drawing.c$(ObjectSuffix) -MF$(IntermediateDirectory)/drawing.c$(DependSuffix) -MM drawing.c
-
-$(IntermediateDirectory)/drawing.c$(PreprocessSuffix): drawing.c
-	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/drawing.c$(PreprocessSuffix) drawing.c
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

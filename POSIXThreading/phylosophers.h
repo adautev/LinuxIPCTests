@@ -1,0 +1,2 @@
+#define DIES_AFTER_TRIES 5
+#define PHYLOSOPHERS_COUNT 5

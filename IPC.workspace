@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="IPC" Database="" Version="10.0.0">
   <Project Name="DrawingClient" Path="DrawingClient/DrawingClient.project" Active="No"/>
-  <Project Name="DrawingInterface" Path="DrawingInterface/DrawingInterface.project" Active="Yes"/>
+  <Project Name="DrawingInterface" Path="DrawingInterface/DrawingInterface.project" Active="No"/>
+  <Project Name="POSIXThreading" Path="POSIXThreading/POSIXThreading.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
       <Project Name="DrawingClient" ConfigName="Debug"/>
       <Project Name="DrawingInterface" ConfigName="Debug"/>
+      <Project Name="POSIXThreading" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
       <Project Name="DrawingClient" ConfigName="Release"/>
       <Project Name="DrawingInterface" ConfigName="Release"/>
+      <Project Name="POSIXThreading" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
